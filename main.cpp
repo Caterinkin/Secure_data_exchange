@@ -39,7 +39,7 @@ public:
     }
 };
 
-// Вариант 1: с использованием std::lock
+// Р’Р°СЂРёР°РЅС‚ 1: СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј std::lock
 void swap_with_lock(Data& a, Data& b)
 {
     std::lock(a.getMutex(), b.getMutex());
@@ -51,7 +51,7 @@ void swap_with_lock(Data& a, Data& b)
     b.setValue(temp);
 }
 
-// Вариант 2: с использованием std::scoped_lock (C++17)
+// Р’Р°СЂРёР°РЅС‚ 2: СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј std::scoped_lock (C++17)
 void swap_with_scoped_lock(Data& a, Data& b)
 {
     std::scoped_lock lock(a.getMutex(), b.getMutex());
@@ -61,7 +61,7 @@ void swap_with_scoped_lock(Data& a, Data& b)
     b.setValue(temp);
 }
 
-// Вариант 3: с использованием std::unique_lock
+// Р’Р°СЂРёР°РЅС‚ 3: СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј std::unique_lock
 void swap_with_unique_lock(Data& a, Data& b)
 {
     std::unique_lock<std::mutex> lock_a(a.getMutex(), std::defer_lock);
@@ -80,7 +80,7 @@ int main()
 
     std::cout << "Before swap: d1 = " << d1.getValue() << ", d2 = " << d2.getValue() << std::endl;
 
-    // Тестируем разные варианты swap
+    // РўРµСЃС‚РёСЂСѓРµРј СЂР°Р·РЅС‹Рµ РІР°СЂРёР°РЅС‚С‹ swap
     swap_with_lock(d1, d2);
     std::cout << "After swap_with_lock: d1 = " << d1.getValue() << ", d2 = " << d2.getValue() << std::endl;
 
